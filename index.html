@@ -1,195 +1,164 @@
-Sure! Here’s the complete HTML code for the 99 names of Allah (with meanings in both Arabic and English), which updates daily at midnight Bahrain time and also changes when the button is pressed.
-
-You can copy-paste this into your GitHub repository, and it should work once you commit the changes.
-
-⸻
-
-Full HTML Code:
-
 <!DOCTYPE html>
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>أسماء الله الحسنى</title>
   <style>
     body {
-      font-family: 'Amiri', serif;
-      background: linear-gradient(to bottom, #f3f4f6, #e2e8f0);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      flex-direction: column;
-      color: #1a202c;
+      font-family: Arial, sans-serif;
       text-align: center;
+      direction: rtl;
       padding: 20px;
     }
-
     h1 {
-      font-size: 2em;
-      margin-bottom: 0.5em;
+      color: #2C3E50;
     }
-
     #name {
-      font-size: 2.5em;
-      font-weight: bold;
-      margin-bottom: 0.2em;
+      font-size: 40px;
+      margin: 20px;
+      color: #2980B9;
     }
-
     #meaning {
-      font-size: 1.2em;
-      color: #4a5568;
-      margin-bottom: 1em;
+      font-size: 20px;
+      margin: 20px;
+      color: #16A085;
     }
-
     button {
-      background-color: #4a5568;
+      background-color: #3498DB;
       color: white;
-      border: none;
       padding: 10px 20px;
-      font-size: 1em;
-      border-radius: 8px;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
+      font-size: 18px;
+      margin-top: 20px;
     }
-
     button:hover {
-      background-color: #2d3748;
+      background-color: #2980B9;
     }
-
-    @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
   </style>
 </head>
 <body>
   <h1>اسم من أسماء الله الحسنى</h1>
-  <div id="name">—</div>
-  <div id="meaning">—</div>
+  <div id="name"></div>
+  <div id="meaning"></div>
   <button onclick="showRandomName()">اسم عشوائي</button>
 
   <script>
     const names = [
-      { ar: "الرَّحْمَن", en: "The Most Merciful" },
-      { ar: "الرَّحِيم", en: "The Most Compassionate" },
-      { ar: "الْمَلِك", en: "The King and Owner of Dominion" },
-      { ar: "الْقُدُّوس", en: "The Absolutely Pure" },
-      { ar: "السَّلَام", en: "The Source of Peace, Safety" },
-      { ar: "الْمُؤْمِن", en: "The One Who gives Emaan and Security" },
-      { ar: "الْمُهَيْمِن", en: "The Guardian, The Witness, The Overseer" },
-      { ar: "الْعَزِيز", en: "The Almighty" },
-      { ar: "الْجَبَّار", en: "The Compeller, The Restorer" },
-      { ar: "الْمُتَكَبِّر", en: "The Supreme, The Majestic" },
-      { ar: "الصَّبُور", en: "The Most Patient" },
-      { ar: "الْبَارِئ", en: "The Evolver" },
-      { ar: "الْمُصَوِّر", en: "The Fashioner" },
-      { ar: "الْغَفَّار", en: "The Constant Forgiver" },
-      { ar: "الْقَهَّار", en: "The All-Prevailing One" },
-      { ar: "الْوَهَّاب", en: "The Supreme Bestower" },
-      { ar: "الرَّزَّاق", en: "The Provider" },
-      { ar: "الْفَتَّاح", en: "The Supreme Opener" },
-      { ar: "الْعَلِيم", en: "The All-Knowing" },
-      { ar: "الْقَابِض", en: "The Withholder" },
-      { ar: "الْبَاسِط", en: "The Extender" },
-      { ar: "الْخَافِض", en: "The Reducer" },
-      { ar: "الرَّافِع", en: "The Exalter" },
-      { ar: "المُعِز", en: "The Honourer" },
-      { ar: "المُذِل", en: "The Dishonourer" },
-      { ar: "السَّمِيع", en: "The All-Hearing" },
-      { ar: "البَصِير", en: "The All-Seeing" },
-      { ar: "الحَكَم", en: "The Impartial Judge" },
-      { ar: "الْعَدْل", en: "The Utterly Just" },
-      { ar: "اللَّطِيف", en: "The Subtle One, The Most Gentle" },
-      { ar: "الْخَبِير", en: "The All-Aware" },
-      { ar: "الحَلِيم", en: "The Most Forbearing" },
-      { ar: "الْعَظِيم", en: "The Magnificent, The Supreme" },
-      { ar: "الغَفُور", en: "The Great Forgiver" },
-      { ar: "الشَّكُور", en: "The Most Appreciative" },
-      { ar: "العَلِيّ", en: "The Most High, The Exalted" },
-      { ar: "الكَبِير", en: "The Most Great" },
-      { ar: "الحَفِيظ", en: "The Preserver" },
-      { ar: "المُقيِت", en: "The Sustainer" },
-      { ar: "الحَسِيب", en: "The Reckoner" },
-      { ar: "الجَلِيل", en: "The Majestic" },
-      { ar: "الكَرِيم", en: "The Most Generous, The Most Esteemed" },
-      { ar: "الرَّقِيب", en: "The Watchful" },
-      { ar: "المُجِيب", en: "The Responsive One" },
-      { ar: "الْوَاسِع", en: "The All-Encompassing, the Boundless" },
-      { ar: "الحَكِيم", en: "The All-Wise" },
-      { ar: "الْوَدُود", en: "The Most Loving" },
-      { ar: "المَجِيد", en: "The Glorious, The Most Honorable" },
-      { ar: "البَاعِث", en: "The Infuser of New Life" },
-      { ar: "الشَّهِيد", en: "The All Observing Witnessing" },
-      { ar: "الْحَق", en: "The Absolute Truth" },
-      { ar: "الْوَكِيل", en: "The Trustee, The Disposer of Affairs" },
-      { ar: "القَوِيّ", en: "The All-Strong" },
-      { ar: "المَتِين", en: "The Firm, The Steadfast" },
-      { ar: "الْوَلِيّ", en: "The Protecting Associate" },
-      { ar: "الْحَمِيد", en: "The Praiseworthy" },
-      { ar: "المُحْصِي", en: "The All-Enumerating, the Counter" },
-      { ar: "المُبْدِئ", en: "The Originator" },
-      { ar: "المُعِيد", en: "The Restorer, The Reinstater" },
-      { ar: "المُحْيِي", en: "The Giver of Life" },
-      { ar: "المُمِيت", en: "The Creator of Death" },
-      { ar: "الْحَيِي", en: "The Ever-Living" },
-      { ar: "الْقَيُّوم", en: "The Sustainer, The Self-Subsisting" },
-      { ar: "الْوَاجِد", en: "The Perceiver" },
-      { ar: "الْمَاجِد", en: "The Illustrious, the Magnificent" },
-      { ar: "الواحِد", en: "The One" },
-      { ar: "الأَحَد", en: "The Unique, The Only One" },
-      { ar: "الصَّمَد", en: "The Eternal, Satisfier of Needs" },
-      { ar: "القَادِر", en: "The Omnipotent" },
-      { ar: "المُقْتَدِر", en: "The Powerful" },
-      { ar: "المُقدِّم", en: "The Expediter, the Promoter" },
-      { ar: "المؤَخِّر", en: "The Delayer" },
-      { ar: "الأوَّل", en: "The First" },
-      { ar: "الآخِر", en: "The Last" },
-      { ar: "الظَّاهِر", en: "The Manifest" },
-      { ar: "البَاطِن", en: "The Hidden One" },
-      { ar: "الْوَالِي", en: "The Sole Governor" },
-      { ar: "المُتَعَالِي", en: "The Self Exalted" },
-      { ar: "البَرُّ", en: "The Source of All Goodness" },
-      { ar: "التَّوَاب", en: "The Ever-Pardoning" },
-      { ar: "الْمُنْتَقِم", en: "The Avenger" },
-      { ar: "العَفُو", en: "The Pardoner" },
-      { ar: "الرَّؤُوف", en: "The Most Kind" },
-      { ar: "مَالِكُ ٱلْمُلْك", en: "Master of the Kingdom, Owner of the Dominion" },
-      { ar: "ذُوالْجَلاَلِ وَالإكْرَام", en: "Possessor of Glory and Honour" },
-      { ar: "الْمُقْسِط", en: "The Just One" },
-      { ar: "الْجَامِع", en: "The Gatherer, The Uniter" },
-      { ar: "ٱلْغَنى", en: "The Self-Sufficient, The Wealthy" },
-      { ar: "ٱلْمَغْنِى", en: "The Enricher" },
-      { ar: "ٱلْمَانِع", en: "The Withholder" },
-      { ar: "ٱلضَّارَ", en: "The Distresser" },
-      { ar: "ٱلنَّافِع", en: "The Propitious, The Benefactor" },
-      { ar: "النُّور", en: "The Light" },
-      { ar: "ٱلْهَادِي", en: "The Guide" },
-      { ar: "البَدِيع", en: "The Incomparable Originator" },
-      { ar: "البَاقِي", en: "The Ever-Surviving" },
-      { ar: "ٱلْوَارِث", en: "The Inheritor, the Heir" },
-      { ar: "الرَّشِيد", en: "The Guide to the Right Path" },
-      { ar: "الصَّبُور", en: "The Most Patient" }
+      { name: "الرحمن", meaning: "The Most Merciful" },
+      { name: "الرحيم", meaning: "The Most Compassionate" },
+      { name: "الملك", meaning: "The King" },
+      { name: "القدوس", meaning: "The Most Sacred" },
+      { name: "السلام", meaning: "The Source of Peace" },
+      { name: "المؤمن", meaning: "The Giver of Faith" },
+      { name: "المهيمن", meaning: "The Guardian" },
+      { name: "العزيز", meaning: "The Mighty" },
+      { name: "الجبار", meaning: "The Compeller" },
+      { name: "المتكبر", meaning: "The Supreme" },
+      { name: "الخالق", meaning: "The Creator" },
+      { name: "البارئ", meaning: "The Evolver" },
+      { name: "المصور", meaning: "The Fashioner" },
+      { name: "الغفار", meaning: "The Great Forgiver" },
+      { name: "القهار", meaning: "The All-Prevailing One" },
+      { name: "الوهاب", meaning: "The Supreme Bestower" },
+      { name: "الرزاق", meaning: "The Provider" },
+      { name: "الفتاح", meaning: "The Supreme Opener" },
+      { name: "العليم", meaning: "The All-Knowing" },
+      { name: "القابض", meaning: "The Withholder" },
+      { name: "الباسط", meaning: "The Extender" },
+      { name: "الخافض", meaning: "The Reducer" },
+      { name: "الرافع", meaning: "The Exalter" },
+      { name: "المعز", meaning: "The Honourer" },
+      { name: "المذل", meaning: "The Dishonourer" },
+      { name: "السميع", meaning: "The All-Hearing" },
+      { name: "البصير", meaning: "The All-Seeing" },
+      { name: "الحكم", meaning: "The Impartial Judge" },
+      { name: "العدل", meaning: "The Utterly Just" },
+      { name: "اللطف", meaning: "The Subtle One" },
+      { name: "الخبير", meaning: "The All-Aware" },
+      { name: "الحي", meaning: "The Ever-Living" },
+      { name: "القيوم", meaning: "The Sustainer" },
+      { name: "الواجد", meaning: "The Perceiver" },
+      { name: "الماجد", meaning: "The Illustrious" },
+      { name: "الواحِد", meaning: "The One" },
+      { name: "الأحد", meaning: "The Only One" },
+      { name: "الصمد", meaning: "The Eternal" },
+      { name: "القادر", meaning: "The Omnipotent" },
+      { name: "المقتدر", meaning: "The Powerful" },
+      { name: "المقدم", meaning: "The Expediter" },
+      { name: "المؤخر", meaning: "The Delayer" },
+      { name: "الأول", meaning: "The First" },
+      { name: "الآخر", meaning: "The Last" },
+      { name: "الظاهر", meaning: "The Manifest" },
+      { name: "الباطن", meaning: "The Hidden One" },
+      { name: "الوالي", meaning: "The Sole Governor" },
+      { name: "المتعالي", meaning: "The Self Exalted" },
+      { name: "البر", meaning: "The Source of All Goodness" },
+      { name: "التواب", meaning: "The Ever-Pardoning" },
+      { name: "المنتقم", meaning: "The Avenger" },
+      { name: "العفو", meaning: "The Pardoner" },
+      { name: "الرؤوف", meaning: "The Most Kind" },
+      { name: "مالك الملك", meaning: "Master of the Kingdom" },
+      { name: "ذو الجلال و الإكرام", meaning: "Lord of Glory and Honour" },
+      { name: "المقسط", meaning: "The Just One" },
+      { name: "الجامع", meaning: "The Gatherer" },
+      { name: "الغني", meaning: "The Self-Sufficient" },
+      { name: "المغني", meaning: "The Enricher" },
+      { name: "المانع", meaning: "The Withholder" },
+      { name: "الضار", meaning: "The Distresser" },
+      { name: "النافع", meaning: "The Benefactor" },
+      { name: "النور", meaning: "The Light" },
+      { name: "الهادي", meaning: "The Guide" },
+      { name: "البديع", meaning: "The Incomparable Originator" },
+      { name: "الباقي", meaning: "The Ever-Surviving" },
+      { name: "الوارث", meaning: "The Inheritor" },
+      { name: "الرشيد", meaning: "The Guide to the Right Path" },
+      { name: "الصبور", meaning: "The Most Patient" }
     ];
 
+    // Get Bahrain date (timezone specific)
     function getBahrainDateString() {
-      const bahrainTime = new Date().toLocaleString("en-US", {
-        timeZone: "Asia/Bahrain",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit"
-      });
-      return bahrainTime.split(",")[0]; // YYYY-MM-DD format
+      const options = { timeZone: 'Asia/Bahrain', year: 'numeric', month: '2-digit', day: '2-digit' };
+      const today = new Date().toLocaleString('en-GB', options);
+      return today;
     }
 
+    // Function to show the name and its meaning
     function showName(index) {
-      const name = names[index];
-      document.getElementById("name").textContent = name.ar;
-      document.getElementById("meaning").textContent = name.en;
+      document.getElementById("name").textContent = names[index].name;
+      document.getElementById("meaning").textContent = names[index].meaning;
     }
 
+    // Load the daily name if it hasn't changed today
     function loadDailyName() {
       const today = getBahrainDateString();
-      const savedDate = localStorage.getItem("dailyDate");
-      let index;
+      const lastDate = localStorage.getItem("dailyDate");
 
-      if (savedDate === today) {
-        index = parseInt(localStorage.getItem("dailyIndex"), 10);
+      // If it's the same day as the last date, show the saved name
+      if (today === lastDate) {
+        const index = localStorage.getItem("dailyIndex");
+        showName(index);
       } else {
-        index = Math.floor(Math.random() * names
+        // Pick a random name if the date has changed
+        const index = Math.floor(Math.random() * names.length);
+        localStorage.setItem("dailyDate", today);
+        localStorage.setItem("dailyIndex", index);
+        showName(index);
+      }
+    }
+
+    // Function to show a random name when the button is clicked
+    function showRandomName() {
+      const index = Math.floor(Math.random() * names.length);
+      showName(index);
+    }
+
+    // Load the daily name when the page is loaded
+    window.onload = function() {
+      loadDailyName();
+    };
+  </script>
+</body>
+</html>
