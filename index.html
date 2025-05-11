@@ -1,47 +1,63 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>99 Names of Allah</title>
+  <title>أسماء الله الحسنى</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f4f4f4;
+      font-family: 'Amiri', serif;
+      background: linear-gradient(to bottom, #f3f4f6, #e2e8f0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      color: #1a202c;
       text-align: center;
-      padding: 50px;
-      margin: 0;
-    }
-    .name-box {
-      background-color: #ffffff;
-      border: 1px solid #ddd;
       padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      display: inline-block;
-      width: 80%;
     }
-    .name {
-      font-size: 40px;
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+
+    #name {
+      font-size: 2.5em;
       font-weight: bold;
-      margin-bottom: 20px;
+      margin-bottom: 0.2em;
     }
-    .meaning {
-      font-size: 20px;
-      color: #555;
+
+    #meaning {
+      font-size: 1.2em;
+      color: #4a5568;
+      margin-bottom: 1em;
     }
+
+    button {
+      background-color: #4a5568;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2d3748;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
   </style>
 </head>
 <body>
-
-  <div class="name-box">
-    <div id="name" class="name"></div>
-    <div id="meaning" class="meaning"></div>
-  </div>
+  <h1>اسم من أسماء الله الحسنى</h1>
+  <div id="name">—</div>
+  <div id="meaning">—</div>
+  <button onclick="showRandomName()">اسم عشوائي</button>
 
   <script>
-
 const names = [
   { name: "الرحمن", meaning: "The Most Merciful" },
   { name: "الرحيم", meaning: "The Most Compassionate" },
@@ -138,20 +154,46 @@ const names = [
   { name: "الصبور", meaning: "The Patient" }
 ];
 
-    function getRandomName() {
-      const randomIndex = Math.floor(Math.random() * names.length);
-      return names[randomIndex];
+
+    function getBahrainDateString() {
+      const bahrainTime = new Date().toLocaleString("en-US", {
+        timeZone: "Asia/Bahrain",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+      });
+      return bahrainTime.split(",")[0]; // YYYY-MM-DD format
     }
 
-    function displayRandomName() {
-      const randomName = getRandomName();
-      document.getElementById("name").innerText = randomName.name;
-      document.getElementById("meaning").innerText = randomName.meaning;
+    function showName(index) {
+      const name = names[index];
+      document.getElementById("name").textContent = name.ar;
+      document.getElementById("meaning").textContent = name.en;
     }
 
-    // Display random name when the page loads
-    window.onload = displayRandomName;
+    function loadDailyName() {
+      const today = getBahrainDateString();
+      const savedDate = localStorage.getItem("dailyDate");
+      let index;
+
+      if (savedDate === today) {
+        index = parseInt(localStorage.getItem("dailyIndex"), 10);
+      } else {
+        index = Math.floor(Math.random() * names.length);
+        localStorage.setItem("dailyDate", today);
+        localStorage.setItem("dailyIndex", index);
+      }
+
+      showName(index);
+    }
+
+    function showRandomName() {
+      const index = Math.floor(Math.random() * names.length);
+      showName(index);
+    }
+
+    // Load daily name on page load
+    loadDailyName();
   </script>
-
 </body>
 </html>
