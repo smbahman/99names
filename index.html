@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>99 Names of Allah</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      padding: 50px;
+      margin: 0;
+    }
+    .name-box {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+      width: 80%;
+    }
+    .name {
+      font-size: 40px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .meaning {
+      font-size: 20px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="name-box">
+    <div id="name" class="name"></div>
+    <div id="meaning" class="meaning"></div>
+  </div>
+
+  <script>
+
+const names = [
+  { name: "الرحمن", meaning: "The Most Merciful" },
+  { name: "الرحيم", meaning: "The Most Compassionate" },
+  { name: "الملك", meaning: "The King" },
+  { name: "القدوس", meaning: "The Most Sacred" },
+  { name: "السلام", meaning: "The Source of Peace" },
+  { name: "المؤمن", meaning: "The Giver of Faith" },
+  { name: "المهيمن", meaning: "The Guardian" },
+  { name: "العزيز", meaning: "The Almighty" },
+  { name: "الجبار", meaning: "The Compeller" },
+  { name: "المتكبر", meaning: "The Supreme" },
+  { name: "الخالق", meaning: "The Creator" },
+  { name: "البارئ", meaning: "The Evolver" },
+  { name: "المصور", meaning: "The Fashioner" },
+  { name: "الغفار", meaning: "The Great Forgiver" },
+  { name: "القهار", meaning: "The All-Prevailing One" },
+  { name: "الوهاب", meaning: "The Supreme Bestower" },
+  { name: "الرزاق", meaning: "The Provider" },
+  { name: "الفتاح", meaning: "The Supreme Opener" },
+  { name: "العليم", meaning: "The All-Knowing" },
+  { name: "القابض", meaning: "The Withholder" },
+  { name: "الباسط", meaning: "The Extender" },
+  { name: "الخافض", meaning: "The Reducer" },
+  { name: "الرافع", meaning: "The Exalter" },
+  { name: "المعز", meaning: "The Honourer" },
+  { name: "المذل", meaning: "The Dishonourer" },
+  { name: "السميع", meaning: "The All-Hearing" },
+  { name: "البصير", meaning: "The All-Seeing" },
+  { name: "الحكم", meaning: "The Impartial Judge" },
+  { name: "العدل", meaning: "The Utterly Just" },
+  { name: "اللطيف", meaning: "The Subtle One" },
+  { name: "الخبير", meaning: "The All-Aware" },
+  { name: "الحليم", meaning: "The Most Forbearing" },
+  { name: "العظيم", meaning: "The Magnificent" },
+  { name: "الغفور", meaning: "The Great Forgiver" },
+  { name: "الشكور", meaning: "The Most Appreciative" },
+  { name: "العلي", meaning: "The Most High" },
+  { name: "الكبير", meaning: "The Most Great" },
+  { name: "المجيب", meaning: "The Responsive One" },
+  { name: "الواسع", meaning: "The All-Encompassing" },
+  { name: "الحكيم", meaning: "The All-Wise" },
+  { name: "الودود", meaning: "The Most Loving" },
+  { name: "المجيد", meaning: "The Glorious" },
+  { name: "الباعث", meaning: "The Infuser of New Life" },
+  { name: "الشهيد", meaning: "The All Observing Witnessing" },
+  { name: "الحق", meaning: "The Absolute Truth" },
+  { name: "الوكيل", meaning: "The Trustee" },
+  { name: "القوي", meaning: "The All-Strong" },
+  { name: "المتين", meaning: "The Firm" },
+  { name: "الولي", meaning: "The Protecting Associate" },
+  { name: "الحميد", meaning: "The Praiseworthy" },
+  { name: "المحصي", meaning: "The All-Enumerating" },
+  { name: "المبدئ", meaning: "The Originator" },
+  { name: "المعيد", meaning: "The Restorer" },
+  { name: "المحيي", meaning: "The Giver of Life" },
+  { name: "المميت", meaning: "The Creator of Death" },
+  { name: "الحي", meaning: "The Ever-Living" },
+  { name: "القيوم", meaning: "The Sustainer" },
+  { name: "الواجد", meaning: "The Perceiver" },
+  { name: "الماجد", meaning: "The Illustrious" },
+  { name: "الواحد", meaning: "The One" },
+  { name: "الأحد", meaning: "The Unique, The Only One" },
+  { name: "الصمد", meaning: "The Eternal" },
+  { name: "القادر", meaning: "The Omnipotent" },
+  { name: "المقتدر", meaning: "The Powerful" },
+  { name: "المقدم", meaning: "The Expediter" },
+  { name: "المؤخر", meaning: "The Delayer" },
+  { name: "الأول", meaning: "The First" },
+  { name: "الآخر", meaning: "The Last" },
+  { name: "الظاهر", meaning: "The Manifest" },
+  { name: "الباطن", meaning: "The Hidden One" },
+  { name: "الوالي", meaning: "The Sole Governor" },
+  { name: "المتعالي", meaning: "The Self Exalted" },
+  { name: "البر", meaning: "The Source of All Goodness" },
+  { name: "التواب", meaning: "The Ever-Pardoning" },
+  { name: "المنتقم", meaning: "The Avenger" },
+  { name: "العفو", meaning: "The Pardoner" },
+  { name: "الرؤوف", meaning: "The Most Kind" },
+  { name: "مالك الملك", meaning: "Master of the Kingdom, Owner of the Dominion" },
+  { name: "ذو الجلال و الإكرام", meaning: "Lord of Glory and Honour" },
+  { name: "المقسط", meaning: "The Just One" },
+  { name: "الجامع", meaning: "The Gatherer" },
+  { name: "الغني", meaning: "The Self-Sufficient" },
+  { name: "المغني", meaning: "The Enricher" },
+  { name: "المانع", meaning: "The Withholder" },
+  { name: "الضار", meaning: "The Distresser" },
+  { name: "النافع", meaning: "The Propitious, the Benefactor" },
+  { name: "النور", meaning: "The Light" },
+  { name: "الهادي", meaning: "The Guide" },
+  { name: "البديع", meaning: "The Incomparable Originator" },
+  { name: "الباقي", meaning: "The Ever-Surviving" },
+  { name: "الوارث", meaning: "The Inheritor" },
+  { name: "الرشيد", meaning: "The Guide to the Right Path" },
+  { name: "الصبور", meaning: "The Patient" }
+];
+
+    function getRandomName() {
+      const randomIndex = Math.floor(Math.random() * names.length);
+      return names[randomIndex];
+    }
+
+    function displayRandomName() {
+      const randomName = getRandomName();
+      document.getElementById("name").innerText = randomName.name;
+      document.getElementById("meaning").innerText = randomName.meaning;
+    }
+
+    // Display random name when the page loads
+    window.onload = displayRandomName;
+  </script>
+
+</body>
+</html>
